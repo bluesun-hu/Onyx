@@ -1,0 +1,235 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package nyilvantartas;
+
+import java.io.*;
+import javax.swing.JOptionPane;
+
+/**
+ *
+ * @author PIRI
+ */
+public class Config {
+
+    private String filenev;
+    private String[] SQL_parancsok;
+    private String[] conf;  //ebbe kerülnek a config fileban tárolt adatbázis adatok
+    private int idx;
+    private int zarojel;
+    private boolean cfg = false;
+    private boolean sql = false;
+    public static int NEVSOR = 0;
+    public static int ADATLAP = 1;
+    public static int ETKEZTETES_NEVSOR = 2;
+    public static int MELEGEDO_NEVSOR = 3;
+    private boolean validcfg = false;
+
+    public Config() {
+        if (Globals.configpath == null) {
+            //alapértelmezett filenév beállítása, ha nincs megadva
+            filenev = Globals.DEFAULT_CONFIG_PATH + "config.cfg";
+            if(ReadConf(filenev)){
+            Globals.setAdatbazis("jdbc:mysql://" + conf[0] + "/" + conf[1], conf[2], conf[3]);
+//            filenev = Globals.DEFAULT_CONFIG_PATH + "config.sql";
+//            if(ReadSQL(filenev))Globals.setSQLParancsok(SQL_parancsok);
+            setSQL();
+            Globals.setSQLParancsok(SQL_parancsok);
+            }
+        } else {
+            filenev = Globals.configpath + "config.cfg";
+            if (ReadConf(filenev)) {
+                Globals.setAdatbazis("jdbc:mysql://" + conf[0] + "/" + conf[1], conf[2], conf[3]);
+//                filenev = Globals.configpath + "config.sql";
+//                if(ReadSQL(filenev))Globals.setSQLParancsok(SQL_parancsok);
+                setSQL();
+                Globals.setSQLParancsok(SQL_parancsok);
+            }
+        }
+    }
+
+    private boolean ReadConf(String filenev) {  //beolvassa a config.cfg fileból a DB elérési adatait
+
+        if (Checkfile(filenev)) { //ellenőrzi, hogy megvan-e
+
+            conf = new String[4]; //jelenleg 4 soros a file
+
+            try {
+                BufferedReader in = new BufferedReader(new FileReader(filenev));
+                for (int i = 0; i < 4; i++) {
+                    conf[i] = in.readLine();
+                }
+                in.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            validcfg = true;
+        } else {
+            JOptionPane.showMessageDialog(null, "A config file nem található", "Hiba", JOptionPane.ERROR_MESSAGE);
+            return false;
+        // hibaüzenet, ha nincs meg a file
+        }
+        return true;
+    }
+    private void setSQL(){
+        SQL_parancsok=new String[36];
+//login
+        SQL_parancsok[0]="SELECT ID,rights,pw FROM ugyfel WHERE login_name=?";
+//ügyfélnévsor
+        SQL_parancsok[1]="SELECT ID, nev, iktsz, felvetel, szul_ido FROM ugyfel WHERE statusz='u' AND deleted=0";
+//dolgozoi névsor
+        SQL_parancsok[2]="SELECT u.ID, nev, szul_ido, beosztas FROM ugyfel AS u LEFT JOIN beosztasi_adat AS b ON u.ID=b.ID WHERE statusz='d' AND deleted=0";
+//management lista
+        SQL_parancsok[3]="SELECT ID, nev, szul_ido, login_name, pw, rights FROM ugyfel WHERE statusz='d' AND deleted=0";
+//irányítószám -> város
+        SQL_parancsok[4]="SELECT varos, vresz FROM helyseg WHERE irsz=?";
+//város -> irányítószám
+        SQL_parancsok[5]="SELECT 	irsz FROM helyseg WHERE varos=?";
+//város, városrész -> irányítószám
+        SQL_parancsok[6]="SELECT irsz FROM helyseg WHERE varos=? AND vresz=?";
+//városrész
+        SQL_parancsok[7]="SELECT vresz FROM helyseg WHERE varos=?";
+//új név mentése
+        SQL_parancsok[8]="INSERT INTO ugyfel (iktsz, nev, statusz, felvetel) VALUES (?,?,?,?)";
+//ID lekérdezése első mentés után
+        SQL_parancsok[9]="SELECT ID FROM ugyfel WHERE iktsz=? AND nev=? AND statusz=? AND felvetel=?";
+//születési adatok mentése
+        SQL_parancsok[10]="UPDATE ugyfel SET nev=?, iktsz=?, szul_nev=?, szul_hely=?, szul_ido=?, anya_nev=?, alpolgsag=?, neme=?, tel_otthon=?, tel_munka=?, tel_mobil=?, email=?, tk_nev=?, h_nev=?, adoszam=?, taj=?, szem_szam=?, szig_szam=?, beadas=?, ertesites=?, megszunes=?, cselekvokepesseg=?, megjegyzes=?, etkezes=?, melegedo=?, rogzitve=?, rogz_id=? WHERE ID=?";
+//cím mentése
+        SQL_parancsok[11]="INSERT INTO cim (ID, irsz, varos, varosresz, utca, kozterulet, hazszam, jelleg) VALUES (?,?,?,?,?,?,?,?)";
+//étkezési adatok mentése(egyéb fül)
+        SQL_parancsok[12]="INSERT INTO etkezesi_adat (ID, dij, tipus, jovedelem, idoszak) VALUES (?,?,?,?,?)";
+//beosztási adatok mentése
+        SQL_parancsok[13]="REPLACE INTO beosztasi_adat (ID, beosztas, alk_minoseg, besorolas, br_ber, heti_ora, feor, mnyp_belepes, onyp_belepes, onyp_dij, munkaszerzodes, munkakori_leiras, cv, bizonyitvany, alkalmassag, reg_kartya_szam) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+//cím frissítése
+        SQL_parancsok[14]="UPDATE cim SET irsz=?, varos=?, varosresz=?, utca=?, kozterulet=?, hazszam=? WHERE ID=? AND jelleg=?";
+//születési adatok lekérdezése
+        SQL_parancsok[15]="SELECT nev, iktsz,felvetel, szul_nev, szul_hely, szul_ido, anya_nev, alpolgsag, neme, tel_otthon, tel_munka, tel_mobil, email, tk_nev, h_nev, adoszam, taj, szem_szam, szig_szam, beadas, ertesites, megszunes, cselekvokepesseg, megjegyzes, etkezes, melegedo FROM ugyfel WHERE ID=?";
+//cím adatok lekérdezése
+        SQL_parancsok[16]="SELECT irsz, varos, varosresz, utca, kozterulet, hazszam, jelleg FROM cim WHERE ID=?";
+//étkezési adatok lekérdezése
+        SQL_parancsok[17]="SELECT dij, tipus, jovedelem FROM etkezesi_adat WHERE ID=? AND (idoszak=(SELECT MAX(idoszak) FROM etkezesi_adat))";
+//beosztási adatok lekérdezése
+        SQL_parancsok[18]="SELECT beosztas, alk_minoseg, besorolas, br_ber, heti_ora, feor, mnyp_belepes, onyp_belepes, onyp_dij, munkaszerzodes, munkakori_leiras, cv, bizonyitvany, alkalmassag, reg_kartya_szam FROM beosztasi_adat WHERE ID=?";
+//név törlése a névsorból
+        SQL_parancsok[19]="UPDATE ugyfel SET deleted=1, del_date=? WHERE ID=?";
+//login adatok frissítése
+        SQL_parancsok[20]="UPDATE ugyfel SET login_name=?, pw=?, rights=? WHERE ID=?";
+//jelszó lekérdezés
+        SQL_parancsok[21]="SELECT * FROM ugyfel WHERE ID=? AND pw=?";
+//új jelszó mentése
+        SQL_parancsok[22]="UPDATE login SET pw=? WHERE ID=?";
+//étkeztetés lista lekérdezése
+        SQL_parancsok[23]="SELECT u.ID, iktsz, nev, tipus FROM ugyfel AS u LEFT JOIN etkezesi_adat AS e ON u.ID=e.ID WHERE etkezes=1 AND statusz='u' AND (deleted=0 OR del_date>?) AND idoszak=(SELECT MAX(idoszak) FROM etkezesi_adat WHERE idoszak<?) AND felvetel<?";
+//fogyasztás lekérdezése az adott hónapra
+        SQL_parancsok[24]="SELECT ID, fogyasztas, lezarva FROM etkeztetes WHERE ev=? AND ho=?";
+//új fogyasztás mentése
+        SQL_parancsok[25]="INSERT INTO etkeztetes (ID, ev, ho, fogyasztas, rogzitve, rogz_id) VALUES (?,?,?,?,?,?)";
+//fogyasztás frissítése
+        SQL_parancsok[26]="UPDATE etkeztetes SET fogyasztas=?, rogzitve=?, rogz_id=? WHERE ID=? AND ev=? AND ho=?";
+//fogyasztás bejegyzés ellenőrző lekérdezés
+        SQL_parancsok[27]="SELECT fogyasztas FROM etkeztetes WHERE ID=? AND ev=? AND ho=?";
+//hónap lezárása (étkeztetés)
+        SQL_parancsok[28]="UPDATE etkeztetes SET lezarva=1 WHERE ev=? AND ho=?";
+//melegedő lista lekérdezése
+        SQL_parancsok[29]="SELECT ID, iktsz, nev FROM ugyfel WHERE melegedo=1 AND statusz='u' AND (deleted=0 OR del_date>?) AND felvetel<?";
+//szolgáltatások lekérdezése az adott napra
+        SQL_parancsok[30]="SELECT ID, szolg, lezarva FROM melegedo WHERE datum=?";
+//uj szolgáltatás igénybevétel beszúrása
+        SQL_parancsok[31]="INSERT INTO melegedo (ID, datum, szolg, rogzitve, rogz_id) VALUES (?, ?, ?, ?, ?)";
+//szolgáltatás igénybevétel frissítése
+        SQL_parancsok[32]="UPDATE melegedo SET szolg=?, rogzitve=?, rogz_id=? WHERE ID=? AND datum=?";
+//szolgáltatás bejegyzés ellenőrző lekérdezés
+        SQL_parancsok[33]="SELECT szolg FROM melegedo WHERE ID=? AND datum=?";
+//hónap lezárása (melegedő)
+        SQL_parancsok[34]="UPDATE melegedo SET lezarva=1 WHERE datum>=? AND datum<=?";
+//cím ellenőrzése
+        SQL_parancsok[35]="SELECT * FROM cim WHERE ID=? AND jelleg=?";
+    }
+
+    private boolean ReadSQL(String filenev) {
+        if (Checkfile(filenev)) { //ellenőrzi, hogy megvan-e
+
+            SQL_parancsok = new String[BiggestIndex(filenev)]; //ahány mondat van a fileban, akkora lesz a tömb
+
+            try {
+                BufferedReader in = new BufferedReader(new FileReader(filenev));
+                String str;
+                while ((str = in.readLine()) != null) {
+                    if (str.startsWith("** ")) {
+                        continue; //ez komment sor
+
+                    }
+                    if (str.startsWith("---")) {
+                        continue; //ez elválasztó sor
+
+                    }
+                    if (str.startsWith("[")) {            //ez SQL mondat
+
+                        zarojel = str.indexOf("]");
+                        idx = Integer.valueOf(str.substring(1, zarojel));
+                        SQL_parancsok[idx] = str.substring(zarojel + 1);   // csak az index utáni részt teszi a tömbbe
+
+                        if (str.endsWith("_")) {
+                            SQL_parancsok[idx] = SQL_parancsok[idx].substring(0, SQL_parancsok[idx].length() - 1);   //még folytatódik a következő sorban, a jelet levágjuk a végéről
+
+                        }
+                    }
+                    if (str.startsWith("_")) {    //az előző sor folytatása
+
+                        SQL_parancsok[idx] += str.substring(1);
+                        if (str.endsWith("_")) {
+                            SQL_parancsok[idx] = SQL_parancsok[idx].substring(0, SQL_parancsok[idx].length() - 1);   //még tovább folytatódik
+
+                        }
+
+                    }
+                }
+                in.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            sql = true;
+        } else {
+            JOptionPane.showMessageDialog(null, "Az SQL file nem található", "Hiba", JOptionPane.ERROR_MESSAGE);
+            return false;
+        // hibaüzenet, ha nincs meg a file
+        }
+        return true;
+    }
+
+    private boolean Checkfile(String filenev) {  //ellenőrzi a megadott file meglétét
+
+        boolean exists = (new File(filenev)).exists();
+        if (exists) {
+            return true;    //megvan
+
+        } else {
+            return false;   //nincs meg
+
+        }
+
+    }
+
+    private int BiggestIndex(String filenev) { //megszámolja, hány SQL mondat van a fileban
+
+        int a = 0;
+        try {
+            BufferedReader in = new BufferedReader(new FileReader(filenev));
+            String str;
+            while ((str = in.readLine()) != null) {
+                if (str.startsWith("[")) {    //azokat számolja, amelyikben index szám van
+
+                    a++;
+                }
+            }
+            in.close();
+        } catch (IOException e) {
+        }
+        return a;
+    }
+    public boolean validconfig(){
+        return validcfg;
+    }
+}

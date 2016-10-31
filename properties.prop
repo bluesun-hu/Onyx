@@ -1,0 +1,24 @@
+#
+#Sun Jul 12 22:07:11 CEST 2009
+kat2=300
+kat1=150
+dbport=3306
+reportpath=C\:\\Nyilvantartas
+vresz=
+hazszam=2
+utca=kis
+configpath=C\:\\Nyilvantartas\\properties.prop
+irsz=6000
+dbpath=localhost
+markcolor=16751001
+weekendcolor=13434726
+cim_nelkuli=Lakc\u00EDm n\u00E9lk\u00FCli
+cim_nelkuli_irsz=6000
+varos=Kecskem\u00E9t
+dbuser=root
+dbname=onyx
+cim_nelkuli_varos=Kecskem\u00E9t
+dbpass=123456
+kozterulet=utca
+min_nyugdij=24000
+max_ter_dij=500

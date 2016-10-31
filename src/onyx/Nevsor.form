@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Form version="1.6" maxVersion="1.6" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
+  <AuxValues>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
+    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1"/>
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+  </AuxValues>
+
+  <Layout>
+    <DimensionLayout dim="0">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="lblLathato" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="chbFilterMind" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="chbFilterEtkeztetes" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="chbFilterNappali" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="chbFilterEjjeli" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="chbFilterAtmeneti" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Component id="lblCimsor" alignment="0" min="-2" max="-2" attributes="1"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                          <Group type="102" alignment="0" attributes="1">
+                              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="tfFilter" max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="btnAdatlap" min="-2" max="-2" attributes="1"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="btnUj" min="-2" max="-2" attributes="1"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="btnTorles" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="btnMentes" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="btnFrissit" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Component id="jScrollPane1" alignment="0" min="-2" pref="519" max="-2" attributes="1"/>
+              </Group>
+              <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+    <DimensionLayout dim="1">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="lblCimsor" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="27" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="btnAdatlap" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnUj" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnTorles" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnFrissit" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnMentes" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="tfFilter" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="lblLathato" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="chbFilterMind" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="chbFilterNappali" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="chbFilterEjjeli" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="chbFilterAtmeneti" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="chbFilterEtkeztetes" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="jScrollPane1" min="-2" pref="473" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+  </Layout>
+  <SubComponents>
+    <Container class="javax.swing.JScrollPane" name="jScrollPane1">
+      <AuxValues>
+        <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+      </AuxValues>
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+      <SubComponents>
+        <Component class="javax.swing.JTable" name="tblNevsor">
+          <Properties>
+            <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor" postCode="sorter=new TableRowSorter&lt;TableModel&gt;(model);&#xa;tblNevsor.setRowSorter(sorter);">
+              <Connection code="model" type="code"/>
+            </Property>
+            <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
+              <TableColumnModel selectionModel="0"/>
+            </Property>
+            <Property name="selectionModel" type="javax.swing.ListSelectionModel" editor="org.netbeans.modules.form.editors2.JTableSelectionModelEditor">
+              <JTableSelectionModel selectionMode="0"/>
+            </Property>
+            <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
+              <TableHeader reorderingAllowed="false" resizingAllowed="false"/>
+            </Property>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JTable()&#xa;{&#xa;    public Component prepareRenderer(TableCellRenderer renderer,&#xa;        int rowIndex, int vColIndex) {&#xa;        Component c = super.prepareRenderer(renderer, rowIndex, vColIndex);&#xa;        boolean szinez=false;&#xa;&#xa;        if(isCellSelected(rowIndex, vColIndex)){    //ha kiv&#xe1;lasztott, akkor k&#xe9;k/feh&#xe9;r&#xa;            c.setBackground(Color.BLUE);&#xa;            c.setForeground(Color.WHITE);&#xa;        }else{&#xa;            if(vColIndex&gt;2){&#xa;                if(szolgaltatas[tblNevsor.convertRowIndexToModel(rowIndex)][vColIndex-3]){&#xa;                    c.setBackground(szolg_szin);&#xa;                }else{&#xa;                    c.setBackground(Color.WHITE);&#xa;                }&#xa;            }else{&#xa;                if(mark[tblNevsor.convertRowIndexToModel(rowIndex)]){&#xa;                    c.setBackground(new Color(Integer.valueOf(Config.settings.getProperty(&quot;markcolor&quot;).toString())));&#xa;                    c.setForeground(Color.BLACK);&#xa;                    if(c instanceof JComponent){&#xa;                        JComponent jc=(JComponent)c;&#xa;                        jc.setToolTipText(megjegyzes[tblNevsor.convertRowIndexToModel(rowIndex)]);&#xa;                    }&#xa;                }else{&#xa;                    c.setBackground(Color.WHITE);&#xa;                    c.setForeground(Color.BLACK);&#xa;                    if(c instanceof JComponent){&#xa;                        JComponent jc=(JComponent)c;&#xa;                        jc.setToolTipText(&quot;&quot;);&#xa;                    }&#xa;                }&#xa;            }&#xa;        }&#xa;        return c;&#xa;&#xa;    }&#xa;}"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="tblNevsor.setToolTipText(&quot;&lt;html&gt;Szinezve = r&#xe9;szt vesz a szolg&#xe1;ltat&#xe1;sban&lt;br&gt;Pipa = elrejt&#xe9;s az adatr&#xf6;gz&#xed;t&#xe9;si list&#xe1;r&#xf3;l&quot;);&#xa;for(int i=0;i&lt;3;i++){&#xa;    tblNevsor.getColumnModel().getColumn(i).setMinWidth(oszlop[i]);&#xa;    tblNevsor.getColumnModel().getColumn(i).setMaxWidth(oszlop[i]);&#xa;    tblNevsor.getColumnModel().getColumn(i).setPreferredWidth(oszlop[i]);&#xa;}&#xa;tblNevsor.getSelectionModel().addListSelectionListener(this);&#xa;tblNevsor.getInputMap().put(KeyStroke.getKeyStroke(&quot;ENTER&quot;), &quot;enter&quot;);&#xa;tblNevsor.getActionMap().put(&quot;enter&quot;, new AdatlapAction());&#xa;tblNevsor.getModel().addTableModelListener(this);"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="TableModel model=new DefaultTableModel(tabla,fejlec){&#xa;Class[] types = new Class [] {&#xa;        java.lang.String.class, java.lang.String.class, java.lang.String.class,&#xa;        java.lang.Boolean.class, java.lang.Boolean.class,&#xa;        java.lang.Boolean.class, java.lang.Boolean.class,&#xa;    };&#xa;    boolean[] canEdit = new boolean [] {&#xa;        false, false, false, true, true, true,&#xa;        true&#xa;    };&#xa;&#xa;    public Class getColumnClass(int columnIndex) {&#xa;        return types [columnIndex];&#xa;    }&#xa;&#xa;    public boolean isCellEditable(int rowIndex, int columnIndex) {&#xa;        return canEdit [columnIndex];&#xa;    }&#xa;};"/>
+          </AuxValues>
+        </Component>
+      </SubComponents>
+    </Container>
+    <Component class="javax.swing.JButton" name="btnAdatlap">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Adatlap"/>
+        <Property name="enabled" type="boolean" value="false"/>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="btnAdatlap.addActionListener(this);&#xa;btnAdatlap.setActionCommand(&quot;adatlap&quot;);"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnUj">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="&#xda;j felv&#xe9;tele"/>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="btnUj.addActionListener(this);&#xa;btnUj.setActionCommand(&quot;uj&quot;);"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnTorles">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="T&#xf6;rl&#xe9;s"/>
+        <Property name="enabled" type="boolean" value="false"/>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="btnTorles.addActionListener(this);&#xa;btnTorles.setActionCommand(&quot;torles&quot;);"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblCimsor">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Tahoma" size="18" style="1"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="jLabel1"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="tfFilter">
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="tfFilter.getDocument().addDocumentListener(this);&#xa;tfFilter.setToolTipText(&quot;&lt;html&gt;A beg&#xe9;pelt karakterekkel&lt;br&gt;kezd&#x151;d&#x151; neveket mutatja a t&#xe1;bl&#xe1;zatban&quot;);"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Sz&#x171;r&#xe9;s:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblLathato">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="L&#xe1;that&#xf3;:"/>
+        <Property name="enabled" type="boolean" value="false"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JCheckBox" name="chbFilterEtkeztetes">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="&#xc9;tkeztet&#xe9;s"/>
+        <Property name="enabled" type="boolean" value="false"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JCheckBox" name="chbFilterNappali">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Nappali meleged&#x151;"/>
+        <Property name="enabled" type="boolean" value="false"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JCheckBox" name="chbFilterEjjeli">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="&#xc9;jjeli mened&#xe9;k"/>
+        <Property name="enabled" type="boolean" value="false"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JCheckBox" name="chbFilterAtmeneti">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="&#xc1;tmeneti sz&#xe1;ll&#xf3;"/>
+        <Property name="enabled" type="boolean" value="false"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JCheckBox" name="chbFilterMind">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Mind"/>
+        <Property name="enabled" type="boolean" value="false"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnFrissit">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Friss&#xed;t&#xe9;s" postCode="btnFrissit.setActionCommand(&quot;frissites&quot;);&#xa;btnFrissit.addActionListener(this);&#xa;btnFrissit.setToolTipText(&quot;Friss&#xed;ti a n&#xe9;vsort&quot;);"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnMentes">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Ment&#xe9;s"/>
+        <Property name="enabled" type="boolean" value="false"/>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="btnMentes.setActionCommand(&quot;mentes&quot;);&#xa;btnMentes.addActionListener(this);"/>
+      </AuxValues>
+    </Component>
+  </SubComponents>
+</Form>
